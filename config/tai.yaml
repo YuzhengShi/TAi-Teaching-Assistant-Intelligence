@@ -1,0 +1,93 @@
+tai:
+  env: ${TAI_ENV:-dev}
+  
+  api:
+    host: ${API_HOST:-0.0.0.0}
+    port: ${API_PORT:-8000}
+    cors_origins:
+      - http://localhost:3000
+    rate_limit:
+      requests_per_minute: 30
+  log_level: ${LOG_LEVEL:-INFO}
+  log_file: ${LOG_FILE:-logs/tai.log}
+  
+  neo4j:
+    uri: ${NEO4J_URI:-bolt://localhost:7687}
+    user: ${NEO4J_USER:-neo4j}
+    password: ${NEO4J_PASSWORD:-changeme}
+    max_connection_lifetime: 3600
+    max_connection_pool_size: 50
+  
+  llm:
+    provider: openai
+    default_model: gpt-4o-mini
+    extraction_model: gpt-4o-mini
+    reasoning_model: gpt-4-turbo
+    temperature: 0.0
+    max_tokens: 2000
+  
+  embedding:
+    provider: openai
+    model: text-embedding-3-small
+    batch_size: 100
+    dimension: 1536
+  
+  indexing:
+    data_dir: data/raw
+    staging_dir: data/staging
+    processed_dir: data/processed
+    chunk_size: 512
+    chunk_overlap: 102
+    content_hash_algorithm: sha256
+  
+  retrieval:
+    default_strategy: local
+    max_context_tokens: 4000
+    top_k: 5
+    hybrid_graph_weight: 0.4
+    hybrid_vector_weight: 0.6
+  
+  session:
+    idle_timeout_minutes: 120
+    max_tokens: 20000
+    reset_by_type:
+      interview:
+        mode: idle
+        idle_minutes: 30
+      assignment:
+        mode: idle
+        idle_minutes: 60
+  
+  safety:
+    ferpa_compliance_mode: strict
+    consent_required: true
+    data_retention_days: 365
+    executor_enabled: true
+    executor_allowlist:
+      - go
+      - python3
+      - docker
+      - aws
+      - terraform
+      - locust
+    executor_denylist:
+      - rm
+      - chmod
+      - chown
+      - dd
+      - nc
+      - netcat
+  
+  wal:
+    path: data/wal.sqlite
+    checkpoint_path: data/graph_checkpoint.json
+  
+  graph:
+    checkpoint_path: data/graph_checkpoint.json
+    circuit_breaker:
+      failure_threshold: 3
+      reset_seconds: 60
+  
+  graphrag:
+    resolution: 0.05
+    community_summary_max_tokens: 500

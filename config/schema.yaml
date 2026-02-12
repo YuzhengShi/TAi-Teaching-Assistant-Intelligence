@@ -1,0 +1,36 @@
+# GraphRAG extraction schema
+# Defines allowed entity and relationship types for knowledge graph
+
+entity_types:
+  - CONCEPT
+  - ALGORITHM
+  - PROTOCOL
+  - PROPERTY
+  - FAILURE_MODE
+  - THEOREM
+  - SYSTEM
+  - DATA_STRUCTURE
+  - LEARNING_OBJECTIVE
+  - MISCONCEPTION
+  - SOURCE
+  - STUDENT
+  - PERSON
+  - PAPER
+
+relationship_types:
+  - PREREQUISITE_OF
+  - IMPLEMENTS
+  - GUARANTEES
+  - VIOLATES
+  - PART_OF
+  - VARIANT_OF
+  - ALTERNATIVE_TO
+  - PROPOSED_IN
+  - USED_BY
+  - TEACHES
+  - INTRODUCED_IN
+  - ADDRESSES
+  - UNDERSTANDS
+  - HAS_CANDIDATE_MISCONCEPTION
+  - BELONGS_TO
+  - REQUIRES
