@@ -1,3 +1,0 @@
-[console_scripts]
-tai-index = scripts.index:main
-tai-server = src.api.app:main
