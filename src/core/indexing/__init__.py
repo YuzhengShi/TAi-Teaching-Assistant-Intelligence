@@ -1,0 +1,3 @@
+"""
+GraphRAG indexing pipeline.
+"""
